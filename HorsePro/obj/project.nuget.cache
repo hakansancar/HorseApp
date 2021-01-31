@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "U8OiqvkjAxXaROqgufhqXd4ecD6ANzkNIzZs97sbfL4SeCnmol2hhvTSOBGqEqDk/R5E3fQngHICh4gawMMrog==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sncrh\\source\\repos\\HorsePro\\HorsePro\\HorsePro.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sncrh\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

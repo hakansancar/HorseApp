@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home Page";
+    @model HorsePro.Models.CreateBet;
+
+}
+
+    <div class="checkout-area pb-80">
+        <hr />
+        <div class="row" style="margin-left:175px;margin-right:175px;margin-top:20px">
+            <div class="col-lg-12">
+
+                <div class="row justify-content-center align-items-center">
+                    <div style="padding-left:45px;padding-right:60px">
+                        <h1 id="metContent" style="font-size:45px">0M</h1>
+                    </div>
+                </div>
+
+                @foreach (var row in ViewBag.listOfHorsesRace)
+                {
+                    <div class="row horseRow" style="background: #ffffff65;">
+                        <div id="@row.horseIdSelector" style="width:220px;margin-top:20px;margin-bottom:20px;padding-left:60px;padding-right:60px">
+                            <div class="row" style="background: #ecf7d698;margin-top:20px;border-radius:10px">
+                                <div class="col-lg-6 mt-15">
+                                    <h5 class="horseName">@row.horseName</h5>
+                                </div>
+                                <div class="col-lg-6">
+                                    <img alt="" src="@row.horseImg" style="height:50px;float:right">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+
+    <script>
+        $(function () {
+
+
+            var metCounter = 0;
+            var metContent = 0;
+            var horseWidth = 220;
+            var winnerHorsew = $('.horseRow').width();
+            var horseWidth = [220, 220, 220, 220];
+            var horseSelectorList = @Html.Raw(Json.Serialize(@ViewBag.horseIdArray));
+            var horsePx = [0, 0, 0, 0];
+
+            var horseInv = null;
+            horseInv = setInterval(horseRacing, 100);
+
+            var horseDiv = $(horseSelectorList[0]);
+            var horseName = horseDiv.find('.horseName').text();
+
+            function horseRacing() {
+                var nextPx = 1 + Math.floor(Math.random() * 10);
+                horsePx[0] = nextPx;
+
+                nextPx = 1 + Math.floor(Math.random() * 10);
+                while ((horseWidth[1] + nextPx) > (horseWidth[0] + horsePx[0]))
+                    nextPx = 1 + Math.floor(Math.random() * 10);
+                horsePx[1] = nextPx;
+
+                nextPx = 1 + Math.floor(Math.random() * 10);
+                while ((horseWidth[2] + nextPx) > (horseWidth[0] + horsePx[0]))
+                    nextPx = 1 + Math.floor(Math.random() * 10);
+
+                horsePx[2] = nextPx;
+
+                nextPx = 1 + Math.floor(Math.random() * 10);
+                while ((horseWidth[3] + nextPx) > (horseWidth[0] + horsePx[0]))
+                    nextPx = 1 + Math.floor(Math.random() * 10);
+
+                horsePx[3] = nextPx;
+
+                if (horseWidth[0] < winnerHorsew) {
+                    horseWidth[0] += horsePx[0];
+                    $(horseSelectorList[0]).css("width", horseWidth[0]);
+
+                    horseWidth[1] += horsePx[1];
+                    $(horseSelectorList[1]).css("width", horseWidth[1]);
+
+                    horseWidth[2] += horsePx[2];
+                    $(horseSelectorList[2]).css("width", horseWidth[2]);
+
+                    horseWidth[3] += horsePx[3];
+                    $(horseSelectorList[3]).css("width", horseWidth[3]);
+
+                    metCounter += horsePx[0];
+
+                    if (metCounter - 78 > 0) {
+                        metCounter -= 78;
+                        metContent += 100;
+                        $("#metContent").text(metContent + "m");
+
+                    }
+                }
+                else {
+                    clearInterval(horseInv);
+
+                    Swal.fire({
+                        title: 'Winner of The Race: ' + horseName,
+                        width: 600,
+                        padding: '3em',
+                        confirmButtonText: 'Go to Payout Page',
+                        background: '#fff url(~/assets/img/trees.png)',
+                        backdrop: `
+                            rgba(0,0,123,0.4)
+                            url("~/assets/img/horsewin2.gif")
+                            right top
+                            no-repeat
+                        `
+                    }).then(function () {
+                        window.location.href = "/Payout/"+'@ViewBag.raceId';
+                    });
+
+                }
+            }
+
+
+        });
+    </script>
+}

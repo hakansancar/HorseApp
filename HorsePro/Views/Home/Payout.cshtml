@@ -1,0 +1,219 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home Page";
+    @model HorsePro.Models.CreateBet;
+
+}
+
+<div class="checkout-area pb-80">
+        <hr/>
+        <div class="row" style="margin-left:175px;margin-right:175px;margin-top:20px">
+            <div class="col-lg-12">
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-4">
+
+                                            @foreach (var row in ViewBag.listOfJockeys)
+                                            {
+                                                <div class="col-lg-12">
+                                                    <div class="row mg-x-0">
+                                                        <div class="col-lg-12 pd-y-15 justify-content-center text-center" style="background-color: #83c5d3;border-top-right-radius: 20px;border-top-left-radius: 20px">
+                                                            <h5 class="tx-22 mg-b-0" style="font-size:20px;padding-top:10px;padding-bottom:3px;font-weight: 200;color: #ffffff">JOCKEY SHARE</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mg-x-0">
+                                                        <div class="col-lg-12 pd-y-15" style="background-color: #f5faeceb;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;padding-top:10px;padding-bottom:15px">
+                                                            <div class="row">
+                                                                <div class="col-lg-6" style="padding-left:5px;padding-right:5px">
+                                                                    <h5 class="tx-22 mg-b-0" style="margin-left:10px;text-align:center;font-size:13px;padding-top:10px;font-weight: 400;color: #999999">WINNING AMOUNT</h5>
+                                                                    <h5 class="tx-22 mg-b-0" style="margin-left:15px;font-size:30px;font-weight: 400;color: #39b54a">$@row.jockeyWinAmount</h5>
+                                                                </div>
+                                                                <div class="col-lg-6 pd-y-15" style="border-left: 1px solid #cccccc;">
+                                                                    <div class="row" style="padding-left:20px;padding-top:35px">
+                                                                        <div class="col-lg-6">
+                                                                            <h5 class="tx-22 mg-b-0" style="font-size:30px;font-weight: 400;color: #39b54a">%@row.jockeyShare</h5>
+                                                                        </div>
+                                                                        <div class="col-lg-6" style="margin-top:-7px;padding-left:0px;">
+                                                                            <h5 class="tx-22 mg-b-0" style="margin-bottom:0px;font-size:10px;margin-left:5px;font-weight: 500;color: #999999">Percent</h5>
+                                                                            <h5 class="tx-22 mg-b-0" style="margin-top:-5px;font-size:10px;margin-left:5px;font-weight: 500;color: #999999">Share</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center text-center" style="margin-top:10px">
+                                                                <a href="http://40.114.24.252:8080/#/blocks" class="btn btn-default" style="font-family: 'Bowlby One SC', cursive;color:#d2965c;border: 1px solid #cccccc;border-radius:30px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px" target="_blank">Go to Hyperledger</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+
+                                            @foreach (var row in ViewBag.listOfOperators)
+                                            {
+                                                <div class="col-lg-12" style="margin-top:20px">
+                                                    <div class="row mg-x-0">
+                                                        <div class="col-lg-12 pd-y-15 justify-content-center text-center" style="background-color: #83c5d3;border-top-right-radius: 20px;border-top-left-radius: 20px">
+                                                            <h5 class="tx-22 mg-b-0" style="font-size:20px;padding-top:10px;padding-bottom:3px;font-weight: 200;color: #ffffff">OPERATOR'S SHARE</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mg-x-0">
+                                                        <div class="col-lg-12 pd-y-15" style="background-color: #f5faeceb;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;padding-top:10px;padding-bottom:15px">
+                                                            <div class="row">
+                                                                <div class="col-lg-6" style="padding-left:5px;padding-right:5px">
+                                                                    <h5 class="tx-22 mg-b-0" style="margin-left:10px;text-align:center;font-size:13px;padding-top:10px;font-weight: 400;color: #999999">WINNING AMOUNT</h5>
+                                                                    <h5 class="tx-22 mg-b-0" style="margin-left:15px;font-size:30px;font-weight: 400;color: #39b54a">$@row.operatorWinAmount</h5>
+                                                                </div>
+                                                                <div class="col-lg-6 pd-y-15" style="border-left: 1px solid #cccccc;">
+                                                                    <div class="row" style="padding-left:20px;padding-top:35px">
+                                                                        <div class="col-lg-6">
+                                                                            <h5 class="tx-22 mg-b-0" style="font-size:30px;font-weight: 400;color: #39b54a">%@row.operatorShare</h5>
+                                                                        </div>
+                                                                        <div class="col-lg-6" style="margin-top:-7px;padding-left:0px;">
+                                                                            <h5 class="tx-22 mg-b-0" style="margin-bottom:0px;font-size:10px;margin-left:5px;font-weight: 500;color: #999999">Percent</h5>
+                                                                            <h5 class="tx-22 mg-b-0" style="margin-top:-5px;font-size:10px;margin-left:5px;font-weight: 500;color: #999999">Share</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center text-center" style="margin-top:10px">
+                                                                <a href="http://40.114.24.252:8080/#/blocks" class="btn btn-default" style="font-family: 'Bowlby One SC', cursive;color:#d2965c;border: 1px solid #cccccc;border-radius:30px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px" target="_blank">Go to Hyperledger</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    
+                                    <div class="col-lg-4">
+                                        <div class="col-lg-12">
+                                                <div class="row mg-x-0">
+                                                    <div class="col-lg-12 pd-y-15 justify-content-center text-center" style="background-color: #f5faeceb;border-radius:20px;padding-top:20px;padding-bottom:50px">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <img alt="" src="https://creovenus.blob.core.windows.net/dist/img/winner2.svg" style="height:100px">
+                                                            <div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-12 justify-content-center text-center">
+                                                                <img alt="" src="https://creovenus.blob.core.windows.net/dist/img/winner.svg" style="height:100px">
+                                                            </div>
+                                                            <div class="col-lg-12 justify-content-center text-center">
+                                                                <h5 class="tx-22 mg-b-0" style="text-align:center;font-size:15px;padding-top:10px;font-weight: 500;color: #1b1464">@ViewBag.winnerHorseName</h5>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="row justify-content-center text-center" style="">
+                                                                    <h5 class="tx-22 mg-b-0" style="font-size:15px;font-weight: 500;color: #1b1464">Jockey:</h5>
+                                                                    <h5 class="tx-22 mg-b-0" style="margin-left:10px;font-size:15px;font-weight: 500;color: #1b1464">@ViewBag.winnerJockeyName</h5> 
+                                                                </div>
+                                                                <div class="row justify-content-center text-center" style="margin-top:10px">
+                                                                    <h5 class="tx-22 mg-b-0" style="font-size:15px;font-weight: 500;color: #1b1464">Payout:</h5>
+                                                                    <h5 class="tx-22 mg-b-0" style="margin-left:10px;font-size:15px;font-weight: 500;color: #1b1464">@ViewBag.winnerJockeyAmount $</h5> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="col-lg-4">
+
+                                        @foreach (var row in ViewBag.listOfOwners)
+                                        {
+                                            <div class="col-lg-12">
+                                                <div class="row mg-x-0">
+                                                    <div class="col-lg-12 pd-y-15 justify-content-center text-center" style="background-color: #83c5d3;border-top-right-radius: 20px;border-top-left-radius: 20px">
+                                                        <div class="row justify-content-center text-center" style="">
+                                                            <h5 class="tx-22 mg-b-0" style="padding-top:10px;padding-bottom:5px;font-size:20px;font-weight: 200;color:#ffffff;">Owner:</h5>
+                                                            <h5 class="tx-22 mg-b-0" style="padding-top:10px;padding-bottom:5px;margin-left:10px;font-size:20px;font-weight: 200;color:#ffffff;">@row.ownerName</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mg-x-0">
+                                                    <div class="col-lg-12 pd-y-15" style="background-color: #f5faeceb;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;padding-top:10px;padding-bottom:15px">
+                                                        <div class="row">
+                                                            <div class="col-lg-6" style="padding-left:5px;padding-right:5px">
+                                                                <h5 class="tx-22 mg-b-0" style="margin-left:10px;text-align:center;font-size:13px;padding-top:10px;font-weight: 400;color: #999999">WINNING AMOUNT</h5>
+                                                                <h5 class="tx-22 mg-b-0" style="margin-left:15px;font-size:30px;font-weight: 400;color: #39b54a">$@row.ownerWinAmount</h5>
+                                                            </div>
+                                                            <div class="col-lg-6 pd-y-15" style="border-left: 1px solid #cccccc;">
+                                                                <div class="row" style="padding-left:20px;padding-top:35px">
+                                                                    <div class="col-lg-6">
+                                                                        <h5 class="tx-22 mg-b-0" style="font-size:30px;font-weight: 400;color: #39b54a">%@row.ownerShare</h5>
+                                                                    </div>
+                                                                    <div class="col-lg-6" style="margin-top:-7px;padding-left:0px;">
+                                                                        <h5 class="tx-22 mg-b-0" style="margin-bottom:0px;font-size:10px;margin-left:5px;font-weight: 500;color: #999999">Percent</h5>
+                                                                        <h5 class="tx-22 mg-b-0" style="margin-top:-5px;font-size:10px;margin-left:5px;font-weight: 500;color: #999999">Share</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-center text-center" style="margin-top:10px">
+                                                            <a href="http://40.114.24.252:8080/#/blocks" class="btn btn-default" style="font-family: 'Bowlby One SC', cursive;color:#d2965c;border: 1px solid #cccccc;border-radius:30px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px" target="_blank">Go to Hyperledger</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                    
+                                    
+                                    </div>
+                                                    
+                                                        
+
+                        
+                        
+            </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        $(function () {
+            'use strict'
+
+            $('.betInp').change(function () {
+                var betVal = $(this).val();
+                var row = $(this).parent().parent();
+                row.find('.payOut').text(betVal * 2 + "$");
+            });
+
+            $("#placeBet").click(function () {
+                    $('.horseRow').each(function (index, item) {
+                        var rowForm = $(this);
+                        var rowFormBetInp = rowForm.find('.betInp').val();
+                        if (rowFormBetInp >= 0) {
+                            alert("deger:" + rowFormBetInp);
+
+                            $.ajax({
+                                type: "POST",
+                                url: rowForm.attr('action'),
+                                data: rowForm.serialize(),
+                                async: false,
+                                success: function (response) {
+                                    alert("bahis alınmıştır");
+                                },
+                                error: function (e) {
+                                    alert("");
+                                    console.log(JSON.stringify(e));
+                                    console.log('error');
+                                }
+                            });
+
+                        }
+                    });
+
+
+            });
+
+
+
+        });
+    </script>
+}
