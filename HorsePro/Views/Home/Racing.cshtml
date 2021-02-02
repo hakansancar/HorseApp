@@ -1,24 +1,46 @@
 ﻿@{
     Layout = "../Shared/_Layout.cshtml";
-    ViewData["Title"] = "Home Page";
-    @model HorsePro.Models.CreateBet;
+    ViewData["Title"] = "Racing Page";
+
+}
+@section Styles {
+
+    <style>
+        .payoutBtn {
+            background-color: #ffffff65 !important;
+        }
+
+        .bet {
+            background-color: #ffffff65 !important;
+        }
+    </style>
 
 }
 
-    <div class="checkout-area pb-80">
-        <hr />
-        <div class="row" style="margin-left:175px;margin-right:175px;margin-top:20px">
-            <div class="col-lg-12">
+<div class="checkout-area pb-80">
+    <hr />
+    <div class="row" style="margin-left:175px;margin-right:175px;margin-top:20px">
+        <div class="col-lg-12" style="padding-right:0px;padding-left:0px">
 
-                <div class="row justify-content-center align-items-center">
-                    <div style="padding-left:45px;padding-right:60px">
-                        <h1 id="metContent" style="font-size:45px">0M</h1>
+            <div class="row justify-content-center align-items-center">
+                <div style="padding-left:45px;padding-right:60px">
+                    <h1 id="metContent" style="font-size:30px;color:#d2965c">0M</h1>
+                </div>
+            </div>
+
+            <div class="col-lg-12" style="background: #ffffff65;border-radius:20px">
+
+                <div class="row">
+                    <div class="col-lg-12" style="padding-left: 50px;padding-right: 40px;margin-top:20px">
+                        <img src="https://creovenus.blob.core.windows.net/dist/img/Meter.svg" alt="horseMeter">
                     </div>
+
+
                 </div>
 
                 @foreach (var row in ViewBag.listOfHorsesRace)
                 {
-                    <div class="row horseRow" style="background: #ffffff65;">
+                    <div class="row horseRow">
                         <div id="@row.horseIdSelector" style="width:220px;margin-top:20px;margin-bottom:20px;padding-left:60px;padding-right:60px">
                             <div class="row" style="background: #ecf7d698;margin-top:20px;border-radius:10px">
                                 <div class="col-lg-6 mt-15">
@@ -35,8 +57,12 @@
 
 
             </div>
+
+
+
         </div>
     </div>
+</div>
 
 @section Scripts {
 
@@ -94,8 +120,8 @@
 
                     metCounter += horsePx[0];
 
-                    if (metCounter - 78 > 0) {
-                        metCounter -= 78;
+                    if (metCounter - 77 > 0) {
+                        metCounter -= 77;
                         metContent += 100;
                         $("#metContent").text(metContent + "m");
 
@@ -109,6 +135,7 @@
                         width: 600,
                         padding: '3em',
                         confirmButtonText: 'Go to Payout Page',
+                        confirmButtonColor: "#3a6aae",
                         background: '#fff url(~/assets/img/trees.png)',
                         backdrop: `
                             rgba(0,0,123,0.4)
@@ -117,6 +144,8 @@
                             no-repeat
                         `
                     }).then(function () {
+                        $("#pageSpinner").removeClass("d-none");
+                        $("#pageSpinner").addClass("d-flex");
                         window.location.href = "/Payout/"+'@ViewBag.raceId';
                     });
 

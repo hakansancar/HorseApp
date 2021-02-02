@@ -58,11 +58,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sncrh\\source\\repos\\HorsePro\\HorsePro\\HorsePro.csproj",
+      "projectUniqueName": "C:\\Users\\sncrh\\Desktop\\horseappv3\\HorsePro\\HorsePro.csproj",
       "projectName": "HorsePro",
-      "projectPath": "C:\\Users\\sncrh\\source\\repos\\HorsePro\\HorsePro\\HorsePro.csproj",
+      "projectPath": "C:\\Users\\sncrh\\Desktop\\horseappv3\\HorsePro\\HorsePro.csproj",
       "packagesPath": "C:\\Users\\sncrh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sncrh\\source\\repos\\HorsePro\\HorsePro\\obj\\",
+      "outputPath": "C:\\Users\\sncrh\\Desktop\\horseappv3\\HorsePro\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

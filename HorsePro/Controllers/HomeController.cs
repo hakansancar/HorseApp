@@ -10,6 +10,7 @@ using HorsePro.Services;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net;
+using System.Globalization;
 
 namespace HorsePro.Controllers
 {
@@ -70,7 +71,6 @@ namespace HorsePro.Controllers
 
             JsonResult response = AddWinnerToHorse(listOfHorsesRace[winnerHorseIndex].horseId, raceId);
 
-
             ViewBag.raceId = raceId;
             ViewBag.horseIdArray = horseIdArray;
             ViewBag.listOfHorsesRace = listOfHorsesRace;
@@ -85,6 +85,7 @@ namespace HorsePro.Controllers
             JObject raceInfo = (JObject)JsonConvert.DeserializeObject(horseRestService.httpRequestService(null, "Race", "GET", raceId));
             string winnerHorseId = getIdResource(raceInfo["winner"].ToString());
             double racePotAmount = Convert.ToDouble(raceInfo["potAmount"]);
+            double playerAmount = 0;
             string winnerHorseName = "";
 
             // Winning bet
@@ -103,21 +104,23 @@ namespace HorsePro.Controllers
 
                     double betAmount = Convert.ToDouble(item["betAmount"]);
 
-                    JObject horseInfo = (JObject)JsonConvert.DeserializeObject(horseRestService.httpRequestService(null, "Horse", "GET", horseId));
-
                     if (winnerHorseId == horseId)
                     {
+                        JObject horseInfo = (JObject)JsonConvert.DeserializeObject(horseRestService.httpRequestService(null, "Horse", "GET", horseId));
                         winnerHorseName = horseInfo["horseName"].ToString();
                         double foldingRate = Convert.ToDouble(horseInfo["foldingRate"]);
                         double newBetAmount = (betAmount * foldingRate)-betAmount;
 
                         JsonResult response = AddAmountToPlayer(betterId, newBetAmount);
-
+                        playerAmount += newBetAmount;
                         racePotAmount -= newBetAmount;
                     }
                     else
                     {
+                        JObject horseInfo = (JObject)JsonConvert.DeserializeObject(horseRestService.httpRequestService(null, "Horse", "GET", winnerHorseId));
+                        winnerHorseName = horseInfo["horseName"].ToString();
                         JsonResult response = AddAmountToPlayer(betterId, -betAmount);
+                        playerAmount -= betAmount;
                     }
 
                 }
@@ -177,9 +180,23 @@ namespace HorsePro.Controllers
 
             ViewBag.winnerJockeyName = listOfJockeys[0].jockeyName;
             ViewBag.winnerJockeyAmount = listOfJockeys[0].jockeyWinAmount;
-            ViewBag.winnerHorseName = winnerHorseName;
+            ViewBag.playerAmount = playerAmount;
+            ViewBag.winnerHorseName = winnerHorseName.ToUpper(new CultureInfo("en-US", false));
 
-            
+            string winnerHorseImg = "";
+
+            if (winnerHorseName == "Drina")
+                winnerHorseImg = "https://creovenus.blob.core.windows.net/dist/img/WinnerDrina.svg";
+            if (winnerHorseName == "Bana")
+                winnerHorseImg = "https://creovenus.blob.core.windows.net/dist/img/WinnerBana.svg";
+            if (winnerHorseName == "Boel")
+                winnerHorseImg = "https://creovenus.blob.core.windows.net/dist/img/WinnerBoel.svg";
+            if (winnerHorseName == "Citron")
+                winnerHorseImg = "https://creovenus.blob.core.windows.net/dist/img/WinnerCitron.svg";
+
+            ViewBag.winnerHorseImg = winnerHorseImg;
+
+
             return View();
         }
 
@@ -315,7 +332,7 @@ namespace HorsePro.Controllers
             string[] horses = { "resource:horsera.Horse#1", "resource:horsera.Horse#2", "resource:horsera.Horse#3", "resource:horsera.Horse#4" };
 
             JArray raceList = (JArray)JsonConvert.DeserializeObject(horseRestService.httpRequestService(null, "Race", "GET", null));
-            int raceId = raceList.Count + 1000;
+            int raceId = raceList.Count + 1250;
             transactionJSON.Add("$class", "horsera.CreateRace");
 
             subtransactionJSON.Add("raceId", raceId);
@@ -335,9 +352,7 @@ namespace HorsePro.Controllers
         {
             int searchHashIndex = resource.IndexOf("#");
             string id = resource.Substring(searchHashIndex + 1, resource.Length - (searchHashIndex + 1));
-
             return id;
-
         }
 
     }

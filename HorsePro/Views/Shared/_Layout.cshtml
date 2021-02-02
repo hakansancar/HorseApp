@@ -20,17 +20,19 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="~/assets/css/style.css">
 
+    <link rel="stylesheet" href="~/assets/lib/spinkit/css/spinkit.css">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
 
-    
+
     <style>
         .bgHorse {
             background: url('https://creovenus.blob.core.windows.net/dist/img/HorsePageBackground.png') no-repeat center bottom fixed;
             background-size: cover;
         }
     </style>
-
+    @RenderSection("Styles", false)
 </head>
 
 <body class="bgHorse">
@@ -42,15 +44,15 @@
                         <div class="col-lg-3">
                             <div class="logo" style="height:30px">
                                 <a href="#">
-                                    <img alt="" src="https://creovenus.blob.core.windows.net/dist/img/LogoHorseRacing.svg">
+                                    <img style="width:80%" alt="" src="https://creovenus.blob.core.windows.net/dist/img/LogoHorseRacing.svg">
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-9">
                             <div style="float:right;margin-top:20px">
-                                <button type="submit" class="btn btn-default" style="background-color:#ffffff;color:green;border-radius:15px;margin-right:20px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px">Bet</button>
-                                <button type="submit" class="btn btn-default" style="background-color:#ffffff;color:green;border-radius:15px;margin-right:20px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px">Race</button>
-                                <button type="submit" class="btn btn-default" style="background-color:#ffffff;color:green;border-radius:15px;margin-right:20px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px">Payout</button>
+                                <a href="/Home/Index"  class="btn btn-default bet" style="background-color:white;color:#3a6aae;border-radius:20px;margin-right:20px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px">Bet</a>
+                                <a href="#"  class="btn btn-default race" style="background-color:white;color:#3a6aae;border-radius:20px;margin-right:20px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px">Race</a>
+                                <a href="#"  class="btn btn-default payoutBtn" style="background-color:white;color:#3a6aae;border-radius:20px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px">Payout</a>
                             </div>
                         </div>
                     </div>
@@ -90,6 +92,25 @@
 
     @RenderSection("Scripts", required: false)
 
+    <div class="overlay-body-spinner d-none" id="pageSpinner" style="background-color: rgba(255,255,255,0.7);z-index: 1200">
+        <div class="sk-circle wd-100 ht-100">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child">
+            </div>
+        </div>
+    </div>
+
 </body>
+
 
 </html>

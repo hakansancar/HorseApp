@@ -4,6 +4,18 @@
     @model HorsePro.Models.CreateBet;
 
 }
+@section Styles {
+
+    <style>
+        .race {
+            background-color: #ffffff65 !important;
+        }
+        .payoutBtn {
+            background-color: #ffffff65 !important;
+        }
+    </style>
+
+}
 
 
 <div class="checkout-area pb-80">
@@ -14,16 +26,16 @@
                 <div class="col-lg-12" style="margin-top:20px;margin-bottom:20px;padding-left:60px;padding-right:60px">
 
                     <div class="row">
-                        <div class="col-lg-3 d-flex align-items-center ml-auto" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">
-                            <h4 class="ml-auto" style="color:black">Total Bet:</h4>
-                            <h4 id="totalBet" style="color:red">1000</h4>
-                            <h4 style="color:red">$</h4>
+                        <div class="col-lg-3 d-flex align-items-center" style="padding-left:0px;font-family: 'Bowlby One SC', cursive;color:#d2965c">
+                            <h4 style="color:black">Total Bet:</h4>
+                            <h4 id="totalBet" style="color:#39b54a">1000</h4>
+                            <h4 style="color:#39b54a">$</h4>
                         </div>
 
-                        <div class="col-lg-3 d-flex align-items-center ml-auto" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">
+                        <div class="col-lg-3 d-flex align-items-center ml-auto" style="padding-right:0px;font-family: 'Bowlby One SC', cursive;color:#d2965c">
                             <h4 class="ml-auto" style="color:black">Current Bet:</h4>
-                            <h4 id="currentBet" style="color:red">0</h4>
-                            <h4 style="color:red">$</h4>
+                            <h4 id="currentBet" style="color:#39b54a">0</h4>
+                            <h4 style="color:#39b54a">$</h4>
                         </div>
 
                     </div>
@@ -31,87 +43,39 @@
                     <div class="row mt-40">
                         <div class="col-lg-2" style="font-family: 'Bowlby One SC', cursive;color:#d2965c;padding-left:40px">Horse</div>
                         <div class="col-lg-2" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Horse Name</div>
-                        <div class="col-lg-1" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Age</div>
-                        <div class="col-lg-1" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Weight</div>
-                        <div class="col-lg-2" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Jockey</div>
-                        <div class="col-lg-2" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Folding Rate</div>
-                        <div class="col-lg-2" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Current Bet</div>
+                        <div class="col-lg-1 tx-center" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Age</div>
+                        <div class="col-lg-1 tx-center" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Weight</div>
+                        <div class="col-lg-2 tx-center" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Jockey</div>
+                        <div class="col-lg-2 tx-center" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Folding Rate</div>
+                        <div class="col-lg-2 tx-center" style="font-family: 'Bowlby One SC', cursive;color:#d2965c">Current Bet</div>
                     </div>
 
 
                     @foreach (var row in ViewBag.listOfHorsesRace)
                     {
-                <form asp-action="CreateBet" asp-controller="Home" method="post" class="row horseRow" style="background: #ecf7d698;margin-top:20px">
-                    <input type="hidden" asp-for="horseId" value="@row.horseId" />
-                    <input type="hidden" class="foldingRate" value="@row.foldingRate.Replace(",", ".")" />
-                    <input type="hidden" asp-for="playerId" value="1" />
-                    <input type="hidden" asp-for="raceId" value="@ViewBag.raceInfo["race"]["raceId"]" />
-                    <div class="col-lg-2">
-                        <img alt="" src="@row.horseImg" style="height:100px">
-                    </div>
-                    <div class="col-lg-2 d-flex align-items-center">@row.horseName</div>
-                    <div class="col-lg-1 d-flex align-items-center">@row.horseAge</div>
-                    <div class="col-lg-1 d-flex align-items-center">@row.horseWeight</div>
-                    <div class="col-lg-2 d-flex align-items-center">@row.horseJockey</div>
-                    <div class="col-lg-2 d-flex align-items-center payOut">@row.foldingRate.Replace(",", ".") x</div>
-                    <div class="col-lg-2 d-flex align-items-center">
-                        <input type="number" asp-for="betAmount" class="form-control betInp" value="0" min="0" />
-                    </div>
-                </form>
+                        <form asp-action="CreateBet" asp-controller="Home" method="post" class="row horseRow" style="background: #ecf7d6e0;margin-top:35px; height:80px">
+                            <input type="hidden" asp-for="horseId" value="@row.horseId" />
+                            <input type="hidden" class="foldingRate" value="@row.foldingRate.Replace(",", ".")" />
+                            <input type="hidden" asp-for="playerId" value="1" />
+                            <input type="hidden" asp-for="raceId" value="@ViewBag.raceInfo["race"]["raceId"]" />
+                            <div class="col-lg-2">
+                                <img alt="" src="@row.horseImg" style="height:100px; margin-top:-10px">
+                            </div>
+                            <div class="col-lg-2 d-flex align-items-center">@row.horseName</div>
+                            <div class="col-lg-1 d-flex align-items-center justify-content-center">@row.horseAge</div>
+                            <div class="col-lg-1 d-flex align-items-center justify-content-center">@row.horseWeight</div>
+                            <div class="col-lg-2 d-flex align-items-center justify-content-center">@row.horseJockey</div>
+                            <div class="col-lg-2 d-flex align-items-center justify-content-center payOut">@row.foldingRate.Replace(",", ".") x</div>
+                            <div class="col-lg-2 d-flex align-items-center justify-content-center">
+                                <input type="number" asp-for="betAmount" class="form-control betInp" style="border:none !important" value="0" min="0" />
+                            </div>
+                        </form>
                     }
-                    <!--
-
-
-       <div class="row" style="background:#ecf7d698;margin-top:40px">
-        <div class="col-lg-2">
-            <img alt="" src="https://creovenus.blob.core.windows.net/dist/img/At2.svg" style="height:100px">
-        </div>
-        <div class="col-lg-2 d-flex align-items-center">Bana</div>
-        <div class="col-lg-1 d-flex align-items-center">4</div>
-        <div class="col-lg-1 d-flex align-items-center">58,5</div>
-        <div class="col-lg-2 d-flex align-items-center">D.Palaur</div>
-        <div class="col-lg-2 d-flex align-items-center payOut">0</div>
-        <div class="col-lg-2 d-flex align-items-center">
-            <input type="number" class="form-control betInp" value="0" />
-        </div>
-    </div>
-
-    <div class="row" style="background:#ecf7d698;margin-top:40px">
-        <div class="col-lg-2">
-            <img alt="" src="https://creovenus.blob.core.windows.net/dist/img/At3.svg" style="height:100px">
-        </div>
-        <div class="col-lg-2 d-flex align-items-center">Boel</div>
-        <div class="col-lg-1 d-flex align-items-center">3</div>
-        <div class="col-lg-1 d-flex align-items-center">59</div>
-        <div class="col-lg-2 d-flex align-items-center">A.Yıldız</div>
-        <div class="col-lg-2 d-flex align-items-center payOut">0</div>
-        <div class="col-lg-2 d-flex align-items-center">
-            <input type="number" class="form-control betInp" value="0" />
-        </div>
-    </div>
-
-    <div class="row" style="background:#ecf7d698;margin-top:40px">
-        <div class="col-lg-2">
-            <img alt="" src="https://creovenus.blob.core.windows.net/dist/img/At4.svg" style="height:100px">
-        </div>
-        <div class="col-lg-2 d-flex align-items-center">Citron</div>
-        <div class="col-lg-1 d-flex align-items-center">5</div>
-        <div class="col-lg-1 d-flex align-items-center">61</div>
-        <div class="col-lg-2 d-flex align-items-center">N.Avcı</div>
-        <div class="col-lg-2 d-flex align-items-center payOut">0</div>
-        <div class="col-lg-2 d-flex align-items-center">
-            <input type="number" class="form-control betInp" value="0" />
-        </div>
-    </div>
-
-
-    -->
-
-
-
 
                     <div class="row" style="margin-top:20px">
-                        <button type="button" class="btn btn-default ml-auto" id="placeBet" style="background-color: #b0db64;color:#ffffff;border-radius:15px;padding-top:5px;padding-bottom:5px;padding-right:30px;padding-left:30px;">place a bet</button>
+                        <div class="col-lg-2 ml-auto" style="padding-right: 15px;">
+                            <button type="button" class="btn btn-default btn-block" id="placeBet" style="background-color: #3a6aae;color:#ffffff;border-radius:.25rem;padding-top:5px;padding-bottom:5px">Place a Bet</button>
+                        </div>
                     </div>
 
                 </div>
@@ -134,7 +98,7 @@
             $('.betInp').change(function () {
                 /*var betVal = $(this).val();
                 var row = $(this).parent().parent();
-                var foldingRate = row.find('.foldingRate').val(); 
+                var foldingRate = row.find('.foldingRate').val();
                 foldingRate = parseFloat(foldingRate.replace(',', '.'));
                 var tBet = betVal * foldingRate;
                 $("#totalBet").text(parseFloat(1000) + tBet);*/
@@ -169,7 +133,8 @@
                                 data: rowForm.serialize(),
                                 async: false,
                                 success: function (response) {
-                                    //alert("bahis alınmıştır");
+                                    $("#pageSpinner").removeClass("d-none");
+                                    $("#pageSpinner").addClass("d-flex");
                                 },
                                 error: function (e) {
                                     alert("");
